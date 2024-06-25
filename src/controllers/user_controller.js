@@ -4,10 +4,12 @@ const userModel = require("../models/user_model");
 
 const userController = {
   createUser: async (req, res, next) => {
+    console.log("got create user request");
     try {
       const userData = req.body;
       const newUser = new userModel(userData );
       await newUser.save();
+      console.log("create account request")
       res.send(newUser);
     } catch (error) {
       console.log(error);
@@ -16,6 +18,7 @@ const userController = {
   },
   signIn:async(req,res,next)=>{
     try{
+      console.log("signIn request")
         const query=req.body;
         const found=await userModel.findOne({email:query["email"]});
         if(found){
@@ -24,10 +27,7 @@ const userController = {
                 res.status(200).send({"message":"success",user:{
                   "email":found.email,
                   "username":found.username,
-                }});
-                // console.log(found);
-                // res.render("../public/html/index.ejs");
-                
+                }});             
             
             }
             else{
