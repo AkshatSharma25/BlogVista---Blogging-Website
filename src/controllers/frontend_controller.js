@@ -21,19 +21,23 @@ const fontend_controller = {
   getProfilePage:async (req, res, next) => {
     try {
       console.log("profile page request");
-      const username= req.params.username;
-      console.log(req.params.username);
-      const foundUser=await userModel.findOne({username:username});
+      const user= req.params.username;
+      // console.log(req.params.username);
+      const foundUser=await userModel.findOne({username:user});
       if(foundUser){
-        res.render("html/profile",{username:username});
+        res.render("html/profile",{username:foundUser.username,totalBlogs:foundUser.totalBlogs,aboutMe:foundUser.aboutMe});
       }
-      console.log(foundUser);
-      res.send("hello world")
+      // console.log(foundUser);
       next();
     } catch (error) {
       console.log(error);
     }
   },
+  getBlogsPage:(req,res,next)=>{
+    console.log("blogs Page request");
+    res.render("html/blogs");
+    console.log("served successfully");
+  }
 };
 
 module.exports = fontend_controller;

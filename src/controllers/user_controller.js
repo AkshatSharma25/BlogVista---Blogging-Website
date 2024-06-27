@@ -27,11 +27,14 @@ const userController = {
                 res.status(200).send({"message":"success",user:{
                   "email":found.email,
                   "username":found.username,
+                  "aboutMe":found.aboutMe,
+                  "totalBlogs":found.totalBlogs
                 }});             
             
             }
             else{
                 console.log("failed");
+                console.log("password did not match")
                 next();
             }
         }

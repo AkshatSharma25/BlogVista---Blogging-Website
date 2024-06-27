@@ -31,8 +31,10 @@ async function main() {
       // console.log(success.user);
       if (success) {
             window.location.replace(`/profile/${success.user.username}`);
+            // console.log(success.user.totalBlogs);
       } else {
         console.log("failed");
+        console.log(success);
       }
     } catch (error) {
       console.log(error);

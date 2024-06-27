@@ -7,4 +7,5 @@ frontend_router.get('/',frontend_controller.getHomePage);
 frontend_router.get('/signin',fontend_controller.getSignInPage);
 frontend_router.get('/register',frontend_controller.getRegisterPage);
 frontend_router.get('/profile/:username',frontend_controller.getProfilePage);
+frontend_router.get('/blogs',frontend_controller.getBlogsPage);
 module.exports=frontend_router;

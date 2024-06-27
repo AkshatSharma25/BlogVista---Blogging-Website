@@ -5,15 +5,12 @@ const multer=require("multer");
 const morgan=require("morgan");
 const path=require("path")
 const uploadRoute=require("./multer/upload_router")
-const serveStatic = require('serve-static');
 const frontend_router=require("./routers/frontend_router");
 const userRouter=require("./routers/userRouter");
 require('dotenv').config();
 
 const PORT=process.env.PORT;
 const dbLink=process.env.dbLink;
-
-
 const connectedToDB=mongoose.connect(dbLink);
 if(connectedToDB) console.log("conneted to db");
 else console.log("error connectng to db");
